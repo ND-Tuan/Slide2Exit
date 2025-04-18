@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Level Data Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Level Data Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d8f6959ffc5e1124c9f357e459599ed0
+  m_SerializeEntries:
+  - m_GUID: 061285052699e9d44a0afa933acadc40
+    m_Address: Assets/Scenes/Stage_1/1_7.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ef6cb01f9fa91e4b9e023abf7bcb3ed
+    m_Address: Assets/Scenes/Stage_1/1_8.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4300dee67f5ea5e4db9b04e706ad73d1
+    m_Address: Assets/Scenes/Stage_1/1_3.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 446298200defa8b488b1a5b38938eafd
+    m_Address: Assets/Scenes/Stage_1/1_1.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c4f366cc0b213d4a98e2bd038ed528d
+    m_Address: Assets/Scenes/Stage_1/1_5.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ae22411b6fd57640b50f6b11404fa47
+    m_Address: Assets/Scenes/Stage_1/1_2.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7bacc86ceb80d1245aa93e2118de21b9
+    m_Address: Assets/Scenes/Stage_1/1_6.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5c4da18348da8046aa4fc473f918dcb
+    m_Address: Assets/Scenes/Stage_1/1_4.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 06ca8710bf707794f915dea4a0d9f42f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8e2d4358ff0b6ab4f8e2c088cbc21e58, type: 2}
+    - {fileID: 11400000, guid: 6562a8fe20b6ca948b385f379e3bb94e, type: 2}
