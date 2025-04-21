@@ -11,7 +11,7 @@ public class FinishCheck : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Player>().Win();
+            collision.gameObject.GetComponent<Player>().Stop();
             collision.gameObject.transform.position = transform.position;
 
             WinEffect.gameObject.SetActive(true);

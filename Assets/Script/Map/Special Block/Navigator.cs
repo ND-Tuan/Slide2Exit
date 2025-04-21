@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Navigator : MonoBehaviour
 {
+    [Range(0, 3)]
     [SerializeField] private int NavigatorID;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Diraction diraction;
@@ -17,6 +18,8 @@ public class Navigator : MonoBehaviour
         Observer.AddListener(EvenID.ChangeDiraction, SetDiraction);
     }
 
+
+    //Đổi hướng người chơi
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -43,6 +46,8 @@ public class Navigator : MonoBehaviour
         }
     }
 
+
+    //Đổi hướng của Navigator
     private void ChangeDiraction()
     {
         switch (diraction)
@@ -81,6 +86,7 @@ public class Navigator : MonoBehaviour
     void OnValidate()
     {
         ChangeDiraction();
+        ColorChanger.ChangeColor(spriteRenderer, NavigatorID);
     }
 }
 

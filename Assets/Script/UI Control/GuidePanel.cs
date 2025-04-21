@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.UIElements;
 
 public class GuidePanel : BasePanelController
 {
@@ -39,47 +40,58 @@ public class GuidePanel : BasePanelController
     {
         if(!guideSO.ContainsKey(guideType.GuideType)) return;
 
-        Vector2 screenPos = Camera.main.WorldToScreenPoint(guideType.transform.position);
+        //Set position
+        AdjustPanelPosition(guideType.transform);
 
+        //set nội dung hiện thị
+        //còn hướng dẫn thì hiển thí nút next
+        ButtonText.text = guideNeedToDisplayList.Count > 1 ? "NEXT" : "CLOSE";
+
+        //tên và mô tả
+        GuideNameText.text = guideSO[guideType.GuideType].GuideName;
+        GuideDescriptionText.text = guideSO[guideType.GuideType].GuideDescription;
+
+        //loại bỏ hướng dẫn đã hiện thị
+        guideNeedToDisplayList.Remove(guideType);
+
+        Popup(AnimationTimeIn);
+
+        //hiện thị focus
+        GuideFocus.transform.position = guideType.transform.position + guideType.OffsetPos;
+        GuideFocus.gameObject.SetActive(true);
+        DisplayFocus();
+    }
+
+    //Điều chỉnh vị trí của panel
+    private void AdjustPanelPosition(Transform transform)
+    {
+        RectTransform rectTransform = GetComponent<RectTransform>();
+
+        //Tính toán vị trí mới của panel dựa trên vị trí của đối tượng
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             transform.parent.GetComponent<RectTransform>(),
-            screenPos,
+            Camera.main.WorldToScreenPoint(transform.position),
             Camera.main,
             out Vector2 localPoint
         );
-        
-        RectTransform rectTransform = GetComponent<RectTransform>();
 
+        //Thay đổi pivot cũng như hướng trái phải panel theo vị trí của đối tượng
         if(localPoint.x >0) {
-
             rectTransform.pivot = new Vector2(1.1f, 1.15f);
             Hand.transform.localScale = new Vector3(-1, 1, 1);
             Hand.GetComponent<RectTransform>().anchoredPosition = new Vector3(300, 200, 0);
             
         } else {
-
             rectTransform.pivot = new Vector2(-0.1f, 1.15f);
             Hand.transform.localScale = new Vector3(1, 1, 1);
             Hand.GetComponent<RectTransform>().anchoredPosition = new Vector3(-300, 200, 0);
-            
         }
 
-        ButtonText.text = guideNeedToDisplayList.Count > 1 ? "NEXT" : "CLOSE";
-
-        GuideNameText.text = guideSO[guideType.GuideType].GuideName;
-        GuideDescriptionText.text = guideSO[guideType.GuideType].GuideDescription;
-
+        //Thay đổi vị trí của panel
         rectTransform.anchoredPosition = localPoint;
-        guideNeedToDisplayList.Remove(guideType);
-
-        Popup(AnimationTimeIn);
-
-        GuideFocus.transform.position = guideType.transform.position + guideType.OffsetPos;
-        GuideFocus.gameObject.SetActive(true);
-        DisplayFocus();
-
     }
 
+    //xử lý logic nút 
     public void NextGuide()
     {
         if(guideNeedToDisplayList.Count > 0){
@@ -91,6 +103,7 @@ public class GuidePanel : BasePanelController
         }
     }
 
+    //xử lý hiển thị panel làm nổi bật 
     private void DisplayFocus(){
 
         GuideFocus.alpha = 0;

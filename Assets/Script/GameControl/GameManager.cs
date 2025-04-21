@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private PlayerData playerData = new();
     public PlayerData PlayerData => playerData;
 
+    private MapManager currentMapManager;
     private Dictionary<(int, int), int> levelStatusValue = new();
     private Dictionary<(int, int), LevelSelectBox> levelSelectBoxes = new();
     public LevelID CurrentLevel { get; private set; }
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     //====Load level================
     public async void LoadLevel(int stage, int level)
-    {
+{
         CurrentLevel = new LevelID { Stage = stage, Index = level };
 
         var handle = Addressables.LoadSceneAsync(CurrentScenePath, LoadSceneMode.Additive);
@@ -92,15 +93,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public async void ReloadLevel()
+    public void ReloadLevel()
     {
-        if (currentSceneHandle.HasValue)
-        {
-            await Addressables.UnloadSceneAsync(currentSceneHandle.Value).Task;
-            currentSceneHandle = null;
-        }
-
-        LoadLevel(CurrentLevel.Stage, CurrentLevel.Index);
+        currentMapManager.ResetMap();
     }
 
     public void LoadNextLevel()
@@ -131,9 +126,12 @@ public class GameManager : MonoBehaviour
         return levelStatusValue.TryGetValue((stage, levelIndex), out int value) ? value : -1;
     }
 
+    //===============================================
+
     //====Khởi tạo thông số cho level================
-    public void SetUpMap(int moveCountLimit, int[] moveToGetStar)
+    public void SetUpMap(MapManager mapManager,int moveCountLimit, int[] moveToGetStar)
     {
+        currentMapManager = mapManager;
         MoveCount = moveCountLimit;
         MoveCountLimit = moveCountLimit;
         this.moveToGetStar = moveToGetStar;
@@ -153,7 +151,9 @@ public class GameManager : MonoBehaviour
             GameOver();
     }
 
-    //====Xử lý trạng thái game================
+    //==================================================
+
+    //====Xử lý trạng thái game=========================
     public void GameWin()
     {
         int star = moveToGetStar.Count(threshold => MoveCount >= threshold);
@@ -171,7 +171,6 @@ public class GameManager : MonoBehaviour
             )
         {
             
-
             levelStatusValue.Add(nextLevelKey, 0);
         }
 
@@ -184,6 +183,7 @@ public class GameManager : MonoBehaviour
         UIController.Instance.ShowGameOverPanel();
     }
 
+    //Cập nhật lại trạng thái level
     private void UpdateLevelStatus(int stage, int index, int star)
     {
         var key = (stage, index);
@@ -195,7 +195,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //====Lưu dữ liệu================
+    //==========================================
+
+    //====Lưu dữ liệu===========================
     public void SaveSettingsData(float musicVolume, float sfxVolume)
     {
         playerData.MusicVolume = musicVolume;

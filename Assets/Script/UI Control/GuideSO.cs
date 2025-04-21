@@ -24,6 +24,7 @@ public enum GuideType
     Navigator,
     Teleporter,
     ObstacleMaker,
+    DimensionShifter
 
 }
     

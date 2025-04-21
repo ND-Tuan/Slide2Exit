@@ -6,17 +6,17 @@ using UnityEngine;
 public class NavigatorChangeButton : MonoBehaviour, IResetLevel
 {
     [SerializeField] private Diraction diraction;
+    [Range(0, 3)]
     [SerializeField] private int NavigatorID;
     [SerializeField] private Sprite PressDown;
 
     private bool isPress = false;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private Sprite PressUp;
 
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         PressUp = spriteRenderer.sprite;
     }
     
@@ -34,6 +34,11 @@ public class NavigatorChangeButton : MonoBehaviour, IResetLevel
     {
         isPress = false;
         spriteRenderer.sprite = PressUp;
+    }
+
+    private void OnValidate()
+    {
+        ColorChanger.ChangeColor(spriteRenderer, NavigatorID);
     }
   
 }

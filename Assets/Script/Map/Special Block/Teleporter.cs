@@ -8,7 +8,9 @@ using System;
 public class Teleporter : MonoBehaviour
 {
     private ParticleSystem[] teleportParticles;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    [Range(0, 5)]
     [SerializeField] private int TeleporterID;
     [SerializeField] private bool isTeleporting = false;
 
@@ -19,7 +21,6 @@ public class Teleporter : MonoBehaviour
 
     void Start()
     {   
-        spriteRenderer = GetComponent<SpriteRenderer>();
         teleportParticles = GetComponentsInChildren<ParticleSystem>();
 
         ParticleSystem.MainModule mainModule;
@@ -67,5 +68,10 @@ public class Teleporter : MonoBehaviour
     private void OnDestroy()
     {
         Observer.RemoveListener(EvenID.Teleport, TeleportPlayer);
+    }
+
+    private void OnValidate()
+    {
+        ColorChanger.ChangeColor(spriteRenderer, TeleporterID);
     }
 }

@@ -15,7 +15,11 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.SetUpMap(moveLimit, new int[] { MoveToGetStar1, MoveToGetStar2, MoveToGetStar3 });
+        SetUp();
+    }
+
+    private void SetUp(){
+        GameManager.Instance.SetUpMap(this, moveLimit, new int[] { MoveToGetStar1, MoveToGetStar2, MoveToGetStar3 });
 
         if(guideNeedToDisplayList.Count > 0)
         {
@@ -29,6 +33,41 @@ public class MapManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);
         UIController.Instance.DisplayGuide(guideNeedToDisplayList);
     }
+
+    public void ResetMap()
+    {
+        SetUp();
+        
+        foreach(IResetLevel resetLevel in GetComponentsInChildren<IResetLevel>(true))
+        {
+            resetLevel.ResetLevel();
+        }
+    }
+}
+
+public static class ColorChanger
+{
+    public static void ChangeColor(this SpriteRenderer spriteRenderer, int colorID)
+    {
+        colorID = Mathf.Clamp(colorID, 0, 10);
+        spriteRenderer.color = distinctColors[colorID];
+    }
+
+
+    private static readonly Color[] distinctColors = new Color[]
+    {
+        new Color(1f, 0, 0.2361317f),       
+        new Color(1, 0.827451f, 0, 1),   
+        new Color(0, 1, 0.4769833f, 1),         
+        new Color(0, 0.827451f, 1, 1),           
+        new Color(1f, 0f, 1f), // Magenta - 4
+        new Color(1f, 0.5f, 0.5f), // Pink - 5
+        new Color(1f, 0, 0.5f),// Rose - 6
+        new Color(1f, 0.5f, 0f), // Orange - 7
+        new Color(0.5f, 0f, 1f), // Purple - 8
+        new Color(0f, 0.5f, 1f), // Sky Blue - 9
+        Color.green
+    };
 }
 
 

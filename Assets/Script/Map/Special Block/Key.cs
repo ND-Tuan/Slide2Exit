@@ -24,17 +24,6 @@ public class Key : MonoBehaviour, IResetLevel
 
     void OnValidate()
     {
-        switch (lockID)
-        {
-            case 0:
-                GetComponent<SpriteRenderer>().color = Color.red;
-                break;
-            case 1:
-                GetComponent<SpriteRenderer>().color = Color.yellow;
-                break;
-            case 2:
-                GetComponent<SpriteRenderer>().color = Color.magenta;
-                break;
-        }
+        ColorChanger.ChangeColor(GetComponent<SpriteRenderer>(), lockID);
     }
 }

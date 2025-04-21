@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IResetLevel
 {
     public Rigidbody2D rb;
     public float speed = 10.0f;
@@ -17,12 +17,15 @@ public class Player : MonoBehaviour
     [SerializeField] private ParticleSystem particle;
 
     private ParticleSystem.MainModule mainModule;
+    private Vector2 originalPosition;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = Interface.GetComponent<Animator>();
         mainModule = particle.main;
+
+        originalPosition = transform.position;
     }
 
     void Update()
@@ -85,7 +88,7 @@ public class Player : MonoBehaviour
         GameManager.Instance.MinusMoveCount();
     }
 
-    // hàm này sẽ được gọi khi nhân vật va chạm với các đối tượng khác
+    //biến dạng khi va chạm
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Deformation(moveDirection);
@@ -107,9 +110,19 @@ public class Player : MonoBehaviour
         });
     }
 
-    public void Win(){
+    public void Stop(){
         mainModule.startColor = new Color(1, 1, 1, 0);
         rb.velocity = Vector2.zero;
+    }
+
+    public void ResetLevel()
+    {
+        transform.localScale = Vector3.one;
+        rb.velocity = Vector2.zero;
+        transform.position = originalPosition;
+        IsRunning = false;
+        animator.SetBool("IsMoving", false);
+        mainModule.startColor = new Color(1, 1, 1, 0);
     }
 
     private void OnDestroy()

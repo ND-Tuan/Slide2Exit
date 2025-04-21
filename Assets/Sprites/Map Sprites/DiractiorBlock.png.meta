@@ -172,6 +172,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: DiractiorBlock_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa5487c6d9208d645b3cecbec4f6beb6
+      internalID: 1833551362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -186,6 +207,7 @@ TextureImporter:
       DiractiorBlock_0: 1109475876
       DiractiorBlock_1: -1665770759
       DiractiorBlock_2: -325337538
+      DiractiorBlock_3: 1833551362
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
