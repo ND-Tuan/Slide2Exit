@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;
+using UnityEngine.UI;
 
 public class DimensionShifter : MonoBehaviour, IResetLevel
 {
@@ -11,12 +12,18 @@ public class DimensionShifter : MonoBehaviour, IResetLevel
 
     [SerializeField] private GameObject RotateObject;
     [SerializeField] private GameObject Wormhole;
-    [SerializeField] private GameObject FakePlayerInterface;
+    [SerializeField] private SpriteRenderer FakePlayerInterface;
     [SerializeField] private GameObject VisualEffect;
 
     [SerializeField] private float RotationSpeed = 100f;
     [SerializeField] private float timeIn;
     [SerializeField] private float timeOut;
+    
+
+    private void Start()
+    {
+        FakePlayerInterface.sprite = GameManager.Instance.PlayerDataManager.GetEquippedSkin().SkinImage;
+    }
 
     void Update()
     {
@@ -39,7 +46,7 @@ public class DimensionShifter : MonoBehaviour, IResetLevel
         Time.timeScale = 0f;
         VisualEffect.SetActive(true);
         Wormhole.SetActive(true);
-        FakePlayerInterface.SetActive(true);
+        FakePlayerInterface.gameObject.SetActive(true);
 
         RotationSpeed+= 200f;
 
@@ -77,7 +84,7 @@ public class DimensionShifter : MonoBehaviour, IResetLevel
             Time.timeScale = 1f;
             VisualEffect.SetActive(false);
             Wormhole.SetActive(false);
-            FakePlayerInterface.SetActive(false);
+            FakePlayerInterface.gameObject.SetActive(false);
         });
     }
 
@@ -107,7 +114,7 @@ public class DimensionShifter : MonoBehaviour, IResetLevel
 
         VisualEffect.SetActive(false);
         Wormhole.SetActive(false);
-        FakePlayerInterface.SetActive(false);
+        FakePlayerInterface.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
 }

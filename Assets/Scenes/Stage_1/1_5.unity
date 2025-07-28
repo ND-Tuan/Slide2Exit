@@ -929,10 +929,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52665b1af1ef504b9974b95a0a9a131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveLimit: 12
+  moveLimit: 25
   MoveToGetStar1: 4
-  MoveToGetStar2: 5
-  MoveToGetStar3: 6
+  MoveToGetStar2: 8
+  MoveToGetStar3: 12
   guideNeedToDisplayList: []
 --- !u!4 &1395157587
 Transform:

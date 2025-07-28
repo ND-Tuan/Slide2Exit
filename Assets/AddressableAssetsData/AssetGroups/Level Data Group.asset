@@ -17,6 +17,21 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: d8f6959ffc5e1124c9f357e459599ed0
   m_SerializeEntries:
+  - m_GUID: 061285052699e9d44a0afa933acadc40
+    m_Address: Assets/Scenes/Stage_2/2_3.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0da68114f00d1fb41ba81aac142548a2
+    m_Address: Assets/Scenes/Stage_2/2_2.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ef6cb01f9fa91e4b9e023abf7bcb3ed
+    m_Address: Assets/Scenes/Stage_2/2_4.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2c4cfca6b30e40f4296a8340a7ea8ef3
     m_Address: Assets/Scenes/Stage_1/1_6.unity
     m_ReadOnly: 0
@@ -49,6 +64,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6ae22411b6fd57640b50f6b11404fa47
     m_Address: Assets/Scenes/Stage_1/1_3.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7bacc86ceb80d1245aa93e2118de21b9
+    m_Address: Assets/Scenes/Stage_2/2_1.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

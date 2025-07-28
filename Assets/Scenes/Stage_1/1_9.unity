@@ -3033,9 +3033,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52665b1af1ef504b9974b95a0a9a131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveLimit: 25
+  moveLimit: 30
   MoveToGetStar1: 2
-  MoveToGetStar2: 10
+  MoveToGetStar2: 8
   MoveToGetStar3: 12
   guideNeedToDisplayList:
   - GuideType: 6

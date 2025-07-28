@@ -105,7 +105,7 @@ MonoBehaviour:
   Board2: {fileID: 0}
   RotateObject: {fileID: 7193577793410592841}
   Wormhole: {fileID: 5734762163650311852}
-  FakePlayerInterface: {fileID: 4622407935940636633}
+  FakePlayerInterface: {fileID: 5106163679932947765}
   VisualEffect: {fileID: 8605812651664145971}
   RotationSpeed: 100
   timeIn: 0.5

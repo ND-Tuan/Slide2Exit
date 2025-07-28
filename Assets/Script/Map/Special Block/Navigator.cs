@@ -4,18 +4,19 @@ using System.Data.Common;
 using ObserverPattern;
 using UnityEngine;
 
-public class Navigator : MonoBehaviour
+public class Navigator : MonoBehaviour, IResetLevel
 {
     [Range(0, 3)]
     [SerializeField] private int NavigatorID;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Diraction diraction;
-    private Diraction originalDiraction => diraction;
+    private Diraction originalDiraction;
 
 
     private void Awake()
     {
         Observer.AddListener(EvenID.ChangeDiraction, SetDiraction);
+        originalDiraction = diraction;
     }
 
 
@@ -26,23 +27,28 @@ public class Navigator : MonoBehaviour
         {
             other.transform.position = transform.position;
             Player player = other.GetComponent<Player>();
+            Vector2 playerDirection = new();
 
             switch (diraction)
             {
                 case Diraction.Up:
-                    player.rb.velocity = Vector2.up * player.speed;
+                    playerDirection = Vector2.up;
                     break;
                 case Diraction.Down:
-                    player.rb.velocity = Vector2.down * player.speed;
+                    playerDirection = Vector2.down;
                     break;
                 case Diraction.Left:
-                    player.rb.velocity = Vector2.left * player.speed;
+                    playerDirection = Vector2.left;
                     break;
                 case Diraction.Right:
-                    player.rb.velocity = Vector2.right * player.speed;
+                    playerDirection = Vector2.right;
                     break;
             }
-            
+
+            player.ChangeDirection(playerDirection);
+
+            Observer.PostEvent(EvenID.ReportTaskProgress, new object[] { TaskType.UseNavigator, 1, true });
+
         }
     }
 
@@ -69,7 +75,7 @@ public class Navigator : MonoBehaviour
 
     public void SetDiraction(object[] data)
     {
-        if((int)data[0] == NavigatorID)
+        if ((int)data[0] == NavigatorID)
         {
             diraction = (Diraction)data[1];
             ChangeDiraction();
@@ -87,6 +93,11 @@ public class Navigator : MonoBehaviour
     {
         ChangeDiraction();
         ColorChanger.ChangeColor(spriteRenderer, NavigatorID);
+    }
+    
+    private void OnDestroy()
+    {
+        Observer.RemoveListener(EvenID.ChangeDiraction, SetDiraction);
     }
 }
 

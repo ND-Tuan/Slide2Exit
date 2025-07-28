@@ -13,6 +13,7 @@ public class Key : MonoBehaviour, IResetLevel
         if (other.CompareTag("Player"))
         {
             Observer.PostEvent(EvenID.UnlockBlock, lockID);
+            Observer.PostEvent(EvenID.ReportTaskProgress, new object[] { TaskType.CollectKey, 1, true});
             gameObject.SetActive(false);
         }
     }

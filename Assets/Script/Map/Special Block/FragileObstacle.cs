@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ObserverPattern;
 
 public class FragileObstacle : MonoBehaviour, IResetLevel
 {
@@ -25,6 +26,8 @@ public class FragileObstacle : MonoBehaviour, IResetLevel
             isBroken = true;
             animator.enabled = true;
             obstacleCollider.enabled = false;
+
+            Observer.PostEvent(EvenID.ReportTaskProgress, new object[] { TaskType.UseFragileObstacle, 1, true});
             Invoke("Disapear", 0.1f);
 
         }

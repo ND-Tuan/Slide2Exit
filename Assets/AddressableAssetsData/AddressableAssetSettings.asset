@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: f433a4b8d3616bd478c84fcfbbece09f
   m_currentHash:
     serializedVersion: 2
-    Hash: 7908732322eaef169c5eebc45f03b00c
+    Hash: 9e15c50dea8b7aca05414ecae74c6c64
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -45,9 +45,13 @@ MonoBehaviour:
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
   - {fileID: 11400000, guid: 3e2cc51480a64f7468438d429b6a2f86, type: 2}
+  - {fileID: 11400000, guid: 428d3897b1597794399099bd871caa90, type: 2}
+  - {fileID: 11400000, guid: 9965f3c3c6dd1494c86b1c5fce5368bf, type: 2}
   - {fileID: 11400000, guid: 7efd669bbe65d2444be2b134da01a49f, type: 2}
+  - {fileID: 11400000, guid: c348b041f1be25141be5f410734a6224, type: 2}
   - {fileID: 11400000, guid: 742b300ee8d0126488e0e455097f52e7, type: 2}
   - {fileID: 11400000, guid: ad0ffea7296e61e4c93d12349c98f3fe, type: 2}
+  - {fileID: 11400000, guid: 934dfb16656335345bae3da4b57ca07e, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -90,6 +94,9 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - StageUI
+    - GuideData
+    - SkinData
+    - TaskData
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 1e085d8465e3c5f419467a9ee6a6dfac, type: 2}

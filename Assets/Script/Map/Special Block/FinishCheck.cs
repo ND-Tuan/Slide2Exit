@@ -7,6 +7,16 @@ public class FinishCheck : MonoBehaviour
 {
     [SerializeField] private ParticleSystem WinEffect;
 
+
+    private void Start()
+    {
+        ParticleSystem.MainModule mainModule = WinEffect.main;
+        Sprite PlayerSkin = GameManager.Instance.PlayerDataManager.GetEquippedSkin().SkinImage;
+        Color32 mainColor = ColorAnalyzer.MainColorFromTexture(PlayerSkin.texture);
+        mainModule.startColor = new ParticleSystem.MinMaxGradient(mainColor);
+
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

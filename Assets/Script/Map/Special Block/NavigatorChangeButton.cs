@@ -25,6 +25,7 @@ public class NavigatorChangeButton : MonoBehaviour, IResetLevel
         if (other.CompareTag("Player") && !isPress)
         {
             Observer.PostEvent(EvenID.ChangeDiraction, new object[] {NavigatorID, diraction});
+            Observer.PostEvent(EvenID.ReportTaskProgress, new object[] { TaskType.ActivateLever, 1, true});
             spriteRenderer.sprite = PressDown;
             isPress = true;
         }

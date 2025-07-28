@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using ObserverPattern;
 
 public class ObstaclePopup : MonoBehaviour, IResetLevel
 {
@@ -20,6 +21,7 @@ public class ObstaclePopup : MonoBehaviour, IResetLevel
     {
         if (other.CompareTag("Player"))
         {
+            Observer.PostEvent(EvenID.ReportTaskProgress, new object[] { TaskType.UseObstacleMaker, 1, true});
             Invoke(nameof(PopupWall), 0.2f);
         }
     }

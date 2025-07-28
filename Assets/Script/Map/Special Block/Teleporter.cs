@@ -36,6 +36,7 @@ public class Teleporter : MonoBehaviour
         if (other.CompareTag("Player") && !isTeleporting)
         {
             Observer.PostEvent(EvenID.Teleport, new object[] {TeleporterID, other.gameObject, this.gameObject});
+            Observer.PostEvent(EvenID.ReportTaskProgress, new object[] { TaskType.UseTeleporter,  1, true});
             isTeleporting = false;
         }
     }

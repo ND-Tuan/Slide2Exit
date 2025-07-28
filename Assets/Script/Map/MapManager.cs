@@ -19,7 +19,7 @@ public class MapManager : MonoBehaviour
     }
 
     private void SetUp(){
-        GameManager.Instance.SetUpMap(this, moveLimit, new int[] { MoveToGetStar1, MoveToGetStar2, MoveToGetStar3 });
+        GameManager.Instance.LevelManager.SetUpMap(this, moveLimit, new int[] { MoveToGetStar1, MoveToGetStar2, MoveToGetStar3 });
 
         if(guideNeedToDisplayList.Count > 0)
         {
